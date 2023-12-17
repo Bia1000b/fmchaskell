@@ -3,7 +3,6 @@ module Nat where
 import Prelude hiding ((<=), (<), (+), (*), (^), fib, quot, min, gcd, lcm, div, max, pred, rem, (-), if_then_else, leq, eq, ev, od, isMul3, divides)
 import Ordering
 
-
 (+) :: Nat -> Nat -> Nat
 (+) n O = n
 (+) n (S m) = S (n + m)

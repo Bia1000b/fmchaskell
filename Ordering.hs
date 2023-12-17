@@ -1,7 +1,6 @@
 module Ordering where
 
 import Prelude hiding ((<), (>), compare)
-
 data Nat = O | S Nat
     deriving (Eq, Show)
 

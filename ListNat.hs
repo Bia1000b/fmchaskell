@@ -5,9 +5,10 @@
 
 module ListNat where
 
-import Prelude hiding (last,init,tail,min, max,maximum, minimum,(<=),(>),(<),take, drop, enumFromTo, length, elem, sum, product, elem, (++),rem, reverse,(+), (*), (^))
+import Prelude hiding (last,init,tail,min, max,maximum, minimum,Nothing,Maybe,Just,(<=),(>),(<),take, drop, enumFromTo, length, elem, sum, product, elem, (++),rem, reverse,(+), (*), (^))
 import Nat
 import Ordering
+import Maybe
 
 type ListNat = [Nat]
 
@@ -130,11 +131,16 @@ filterOdd (x:xs)
     |od x =  x: filterOdd (xs)
     |otherwise = filterOdd (xs)
 
-minimum :: ListNat -> Nat
-minimum [] = 
-minimum (x:xs)
-    |
-    |
+minimum :: ListNat -> Maybe Nat
+minimum [] = Nothing
+minimum [x] = Just x
+minimum (x1:x2:xs)
+    | x1<x2 = minimum (x1:xs)
+    |otherwise = minimum (x2:xs)
 
-
---maximum     : ListNat -> Nat
+maximum :: ListNat -> Maybe Nat
+maximum [] = Nothing
+maximum [x] = Just x
+maximum (x1:x2:xs)
+    | x1>x2 = maximum (x1:xs)
+    |otherwise = maximum (x2:xs)
